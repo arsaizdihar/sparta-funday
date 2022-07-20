@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -51,11 +52,16 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
           kesan {
             value
           }
+          dokumentasi {
+            mimeType
+            url
+          }
         }
       }
     `,
     variables: { slug },
   });
+  console.log(res.challenge.dokumentasi);
   return {
     props: {
       challenge: res.challenge as {
@@ -63,6 +69,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
         description: string;
         slug: string;
         kesan: { value: string }[];
+        dokumentasi: { mimeType: string; url: string }[];
       },
     },
   };
@@ -135,6 +142,30 @@ const ChallengePage: NextPage<
             ))}
           </List>
         )}
+
+        {challenge.dokumentasi.length > 0 && (
+          <Heading as={"h2"} textAlign="center" mt={8}>
+            DOKUMENTASI
+          </Heading>
+        )}
+
+        <Flex justifyContent={"center"} flexWrap={"wrap"} gap={4} mt={4}>
+          {challenge.dokumentasi.map((dokumentasi, idx) =>
+            dokumentasi.mimeType.startsWith("image") ? (
+              <img
+                key={idx}
+                alt="dokumentasi"
+                src={dokumentasi.url}
+                loading="lazy"
+                width={400}
+              />
+            ) : (
+              <video width={400} controls>
+                <source src={dokumentasi.url} type={dokumentasi.mimeType} />
+              </video>
+            )
+          )}
+        </Flex>
       </Box>
     </Container>
   );
