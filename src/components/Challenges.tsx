@@ -35,7 +35,8 @@ function Challenges(props: ChallengesProps) {
         </Text>
         <Grid
           templateColumns={{
-            base: "repeat(2, 1fr)",
+            base: "repeat(1, 1fr)",
+            sm: "repeat(2, 1fr)",
             md: "repeat(3, 1fr)",
             lg: "repeat(4, 1fr)",
           }}
@@ -62,25 +63,44 @@ function Challenge({
       <ChakraLink
         display={"flex"}
         bgColor={"white"}
-        p={4}
         alignItems="center"
-        rounded={"md"}
-        shadow={"md"}
+        roundedRight={"md"}
+        shadow={"lg"}
         _hover={{
           textDecoration: "none",
           animation: "jiggle 1s linear infinite",
         }}
       >
-        <Text
-          fontFamily={"heading"}
-          fontSize="5xl"
-          pr={4}
-          className="number"
-          color={"orange.400"}
+        <Flex
+          h="full"
+          alignItems={"center"}
+          bgColor="orange.200"
+          px={3}
+          borderWidth={2}
+          borderColor="orange.900"
         >
-          {number}
-        </Text>
-        <Flex direction={"column"} h="full">
+          <Text
+            fontFamily={"heading"}
+            fontSize="4xl"
+            w={4}
+            className="number"
+            color={"orange.400"}
+            lineHeight={1}
+          >
+            {number.toString().padStart(2, "0")}
+          </Text>
+        </Flex>
+        <Flex
+          direction={"column"}
+          flexGrow={1}
+          h="full"
+          py={4}
+          px={2}
+          borderWidth={3}
+          borderLeftWidth={0}
+          borderColor="orange.900"
+          roundedRight={"md"}
+        >
           <Heading as="h4" fontSize={"xl"} letterSpacing={2} mb={2}>
             {title}
           </Heading>
