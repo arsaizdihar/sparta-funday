@@ -19,7 +19,7 @@ export interface ChallengesProps {
 
 function Challenges(props: ChallengesProps) {
   return (
-    <Box backgroundColor={"orange.300"} py={8} px={4}>
+    <Box py={8} px={4}>
       <Container
         maxW="container.lg"
         py={8}
@@ -61,6 +61,7 @@ function Challenge({
   return (
     <Link href={`/${slug}`} passHref>
       <ChakraLink
+        id={slug}
         display={"flex"}
         bgColor={"white"}
         alignItems="center"

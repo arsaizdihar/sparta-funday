@@ -2,7 +2,7 @@ import { Box, Container, Heading, Text } from "@chakra-ui/react";
 
 function About() {
   return (
-    <Box backgroundColor={"orange.300"} py={8} px={4}>
+    <Box py={8} px={4}>
       <Container
         maxW="container.sm"
         py={8}
