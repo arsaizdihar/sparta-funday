@@ -62,6 +62,7 @@ function Challenge({
     <Link href={`/${slug}`} passHref>
       <ChakraLink
         id={slug}
+        scrollMarginTop={48}
         display={"flex"}
         bgColor={"white"}
         alignItems="center"

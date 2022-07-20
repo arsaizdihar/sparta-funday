@@ -61,7 +61,6 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
     `,
     variables: { slug },
   });
-  console.log(res.challenge.dokumentasi);
   return {
     props: {
       challenge: res.challenge as {
@@ -158,6 +157,7 @@ const ChallengePage: NextPage<
                 src={dokumentasi.url}
                 loading="lazy"
                 width={400}
+                style={{ objectFit: "contain" }}
               />
             ) : (
               <video width={400} controls>
